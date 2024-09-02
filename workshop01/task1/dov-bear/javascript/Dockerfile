@@ -23,12 +23,14 @@ COPY views views
 RUN npm ci
 
 ## How to run
-ENV PORT=3000
-ENV INSTANCE_NAME=""
-ENV INSTANCE_HASH=""
+ENV PORT=5000
+ENV INSTANCE_NAME=teddy_bear
+ENV INSTANCE_HASH=hash
 
 # What are the exposed port
 EXPOSE ${PORT}
 
 # Run the application (2 Ways: Entry point and commands)
-ENTRYPOINT ["node", "main"]
+ENTRYPOINT node main
+
+CMD [ "" ]
