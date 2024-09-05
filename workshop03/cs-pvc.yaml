@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cs-pvc
+  namespace: csns
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: do-block-storage
+  
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: cs-po
+#   namespace: csns
+# spec:
+#   volumes:
+#   - name: data-vol
+#     persistentVolumeClaim:
+#       claimName: cs-pvc
+#   containers:
+#   - name: cs-container
+#     image: lscr.io/linuxserver/code-server:latest
+#     envFrom:
+#     - configMapRef:
+#         name: cs-cm
+#     - secretRef:
+#         name: cs-secret
+#     ports:
+#     - containerPort: 8443
+#     volumeMounts:
+#     - name: data-vol
+#       mountPath: /path/to/code-server/config:/config
+#     resources: {}
