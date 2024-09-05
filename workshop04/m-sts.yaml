@@ -62,6 +62,12 @@ spec:
             name: m-cm
         - secretRef:
             name: m-secret
+        livenessProbe:
+          httpGet:
+            path: /minio/health/live
+            port: 9000
+          initialDelaySeconds: 60
+          periodSeconds: 30
         ports:
         - name: data
           containerPort: 9000
